@@ -1,0 +1,183 @@
+[colors]
+background = #122326
+foreground = #dfdfdf
+muted      = #1a1a1a
+urgent     = #832116
+
+[template]
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 25
+override-redirect = false
+#wm-restack = i3
+fixed-center = false
+background = ${colors.background}
+foreground = ${colors.foreground}
+padding-left = 0
+padding-right = 4
+margin-top = 0
+margin-bottom = 0
+module-margin-left = 5
+module-margin-right = 3
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+font-0 = "PT Sans:pixelsize=9:weight=bold"
+font-1 = "Deja Vu Sans Mono:pixelsize=8.5;1"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
+font-3 = "Iosevka:pixelsize=17;3"
+
+[bar/primary2]
+inherit = template
+modules-right = bluearrow resolution uptime date time
+modules-left = i3
+
+[bar/secondary2]
+inherit = template
+background = #00000000
+modules-right = redarrow pulseaudio keyboard wlan battery 
+
+
+[bar/primary]
+inherit = template
+modules-right = redarrow pulseaudio keyboard wlan battery bluearrow resolution uptime date time
+modules-left = i3
+
+[bar/secondary]
+inherit = template
+modules-left = i3
+modules-right = bluearrow resolution time
+
+[module/keyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+format =  <label-indicator><label-layout>
+label-indicator = %{F#ffcc00}
+label-layout =  %layout%
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 5
+format-connected =   <label-connected>
+label-connected = %essid%
+
+[module/date]
+type = internal/date
+interval = 60
+date =   %b-%d
+
+[module/time]
+type = internal/date
+interval = 60
+date =   %I:%M%p
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume =   <label-volume>
+label-volume = %percentage%%
+label-muted =   -%
+label-muted-foreground = ${colors.muted}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 98
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = %{F#c4c400} <label-full>
+ramp-capacity-0 = %{F#880000}
+# ff1a1a
+ramp-capacity-1 = %{F#ffcc00}
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+animation-charging-framerate = 41
+animation-charging-0 = %{F#dfdfdf}
+animation-charging-1 = %{F#dcdcc6}
+animation-charging-2 = %{F#d9d9ad}
+animation-charging-3 = %{F#d6d695}
+animation-charging-4 = %{F#d3d37c}
+animation-charging-5 = %{F#d0d063}
+animation-charging-6 = %{F#cdcd4a}
+animation-charging-7 = %{F#caca32}
+animation-charging-8 = %{F#c7c719}
+animation-charging-9 = %{F#c4c400}
+animation-charging-10 = %{F#c7c719}
+animation-charging-11 = %{F#caca32}
+animation-charging-12 = %{F#cdcd4a}
+animation-charging-13 = %{F#d0d063}
+animation-charging-14 = %{F#d3d37c}
+animation-charging-15 = %{F#d6d695}
+animation-charging-16 = %{F#d9d9ad}
+animation-charging-17 = %{F#dcdcc6}
+animation-charging-18 = %{F#dfdfdf}
+
+
+[module/i3]
+type = internal/i3
+wrapping-scroll = false
+pin-workspaces = true
+format = <label-state> <label-mode>
+font = 2
+padding = 3
+ws-icon-0 = 1;I
+ws-icon-1 = 2;II
+ws-icon-2 = 3;III
+ws-icon-3 = 4;IV
+ws-icon-4 = 5;V
+ws-icon-5 = 6;VI
+ws-icon-6 = 7;VII
+ws-icon-7 = 8;IIX
+ws-icon-8 = 9;IX
+ws-icon-9 = 10;X
+label-mode = %mode%
+label-mode-padding = ${self.padding}
+label-mode-background = ${colors.urgent}
+label-mode-foreground = ${colors.foreground}
+label-focused-font = ${self.font}
+label-focused = %index%
+label-focused-foreground = ${colors.foreground}
+label-focused-background = #724944
+label-focused-padding = ${self.padding}
+label-unfocused-font = ${self.font}
+label-unfocused = %index%
+label-unfocused-padding = ${self.padding}
+label-unfocused-foreground = #999999
+label-unfocused-background = #222222
+label-visible-font = ${self.font}
+label-visible = %index%
+label-visible-padding = ${self.padding}
+label-visible-foreground = ${colors.foreground}
+label-visible-background = #444444
+label-urgent-font = ${self.font}
+label-urgent = %index%
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.urgent}
+label-urgent-padding = ${self.padding}
+
+[module/uptime]
+type = custom/script
+exec = ~/.config/polybar/scripts/uptime.sh
+format =   Up: <label>
+interval = 60
+
+[module/resolution]
+type = custom/script
+exec = ~/.config/polybar/scripts/resolution.sh $MONITOR
+format =   <label>px
+interval = 6000
+
+[module/redarrow]
+type = custom/text
+content = %{F#724944}%{F-}%{B#724944}
+
+[module/bluearrow]
+type = custom/text
+content = %{F#2d2d56}%{B-}%{F-}%{B#2d2d56}
+
+[settings]
+screenchange-reload = true
+
+
