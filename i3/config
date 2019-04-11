@@ -1,3 +1,7 @@
+#############
+#  DEFAULT  #
+#############
+
 font pango:monospace 8
 font pango:DejaVu Sans Mono 8, FontAwesome 8
 
@@ -131,29 +135,19 @@ mode "resize" {
 
 bindsym Mod1+r mode "resize"
 
-# customizations:
 
-# start a terminal
-bindsym Mod1+Return exec termite
-
-# second monitor
-exec_always xrandr --auto ; xrandr --output eDP1 --left-of HDMI2 --primary
-# wallpaper
-exec_always feh --bg-fill /home/zach/Pictures/finnface.jpg
-
-# gaps
-gaps inner 10
-gaps outer 5
+##############
+#  KEYBINDS  #
+##############
 
 # program launcher
-bindsym Mod1+d exec rofi -show run -config ~/.config/rofi/config
+bindsym Mod1+d exec --no-startup-id rofi -show run -config ~/.config/rofi/config
 
 # screenshot keybindings
-bindsym Print exec scrot
-bindsym --release Shift+Print exec scrot --select
+bindsym Print exec --no-startup-id scrot
+bindsym --release Shift+Print exec --no-startup-id scrot --select
 
 # keyboard layout toggle
-exec setxkbmap -layout us,ca
 bindsym Mod1+c exec (setxkbmap -query | grep -q "layout:\s\+us") && setxkbmap ca || setxkbmap us
 
 # sound control
@@ -166,10 +160,28 @@ bindsym Mod1+F5 exec xbacklight -dec 5
 bindsym Mod1+F6 exec xbacklight -inc 5
 
 # bind lock
-bindsym Mod1+P exec i3lock -feo
+bindsym Mod1+P exec i3lock -e -c 000000
 
 # open empty window
 bindsym Mod1+o exec i3 open
+
+# exit i3 (logs you out of your X session)
+bindsym Mod1+Shift+Ctrl+e exit
+
+# reaload polybar
+bindsym Mod1+Shift+p exec --no-startup-id ~/.config/polybar/launch
+
+# start a terminal
+bindsym Mod1+Return exec --no-startup-id termite
+
+
+##########
+#  MISC  #
+##########
+
+# gaps
+gaps inner 10
+gaps outer 5
 
 # remove title bar windows but keep a small border
 new_window pixel 3
@@ -177,21 +189,28 @@ new_window pixel 3
 # for when using tabbed layout
 title_align center
 
-set $accent "#724944"
-
 # window title colour
+set $accent "#724944"
 # class        border    backgr.   text     indicator  child_border
 client.focused $accent $accent "#dfdfdf" $accent
-#ind"#b38580"
-#ind "#f5caa7"
-#"#a57c77"
+
+
+############
+#  EXECS  #
+###########
+
+# keyboard layouts
+exec --no-startup-id setxkbmap -layout us,ca
 
 # compton
-#exec_always killall compton; compton --blur-method kawase --blur-strength 7 -b
-exec_always killall compton; compton -b
+exec_always --no-startup-id killall compton; compton -b
 
 # polybar
-exec_always .config/polybar/launch
+exec_always --no-startup-id .config/polybar/launch
 
-# exit i3 (logs you out of your X session)
-bindsym Mod1+Shift+Crtl+e exit
+# monitor arrangement
+exec_always --no-startup-id xrandr --auto --output eDP1 --left-of HDMI2 --primary
+
+# wallpaper
+exec_always --no-startup-id feh --bg-fill /home/zach/Pictures/finnface.jpg
+

@@ -1,7 +1,7 @@
 [colors]
 background = #122326
 foreground = #dfdfdf
-muted      = #1a1a1a
+muted      = #dfdfdf
 urgent     = #832116
 
 [template]
@@ -25,17 +25,6 @@ font-0 = "PT Sans:pixelsize=9:weight=bold"
 font-1 = "Deja Vu Sans Mono:pixelsize=8.5;1"
 font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
 font-3 = "Iosevka:pixelsize=17;3"
-
-[bar/primary2]
-inherit = template
-modules-right = bluearrow resolution uptime date time
-modules-left = i3
-
-[bar/secondary2]
-inherit = template
-background = #00000000
-modules-right = redarrow pulseaudio keyboard wlan battery 
-
 
 [bar/primary]
 inherit = template
@@ -76,7 +65,7 @@ date =   %I:%M%p
 type = internal/pulseaudio
 format-volume =   <label-volume>
 label-volume = %percentage%%
-label-muted =   -%
+label-muted =   0%
 label-muted-foreground = ${colors.muted}
 
 [module/battery]
@@ -86,14 +75,34 @@ adapter = AC0
 full-at = 98
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-full = %{F#c4c400} <label-full>
-ramp-capacity-0 = %{F#880000}
-# ff1a1a
+format-full = %{F#ffcc00} <label-full>
+ramp-capacity-0 = %{F#cc0000}
 ramp-capacity-1 = %{F#ffcc00}
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-animation-charging-framerate = 41
+animation-charging-framerate = 35
+animation-charging-0 = %{F#dfdfdf}
+animation-charging-1 = %{F#e3ddc6}
+animation-charging-2 = %{F#e6dbad}
+animation-charging-3 = %{F#ead995}
+animation-charging-4 = %{F#edd77c}
+animation-charging-5 = %{F#f1d463}
+animation-charging-6 = %{F#f4d24a}
+animation-charging-7 = %{F#f8d032}
+animation-charging-8 = %{F#fbce19}
+animation-charging-9 = %{F#ffcc00}
+animation-charging-10 = %{F#fbce19}
+animation-charging-11 = %{F#f8d032}
+animation-charging-12 = %{F#f4d24a}
+animation-charging-13 = %{F#f1d463}
+animation-charging-14 = %{F#edd77c}
+animation-charging-15 = %{F#ead995}
+animation-charging-16 = %{F#e6dbad}
+animation-charging-17 = %{F#e3ddc6}
+animation-charging-18 = %{F#dfdfdf}
+
+[comment]
 animation-charging-0 = %{F#dfdfdf}
 animation-charging-1 = %{F#dcdcc6}
 animation-charging-2 = %{F#d9d9ad}
