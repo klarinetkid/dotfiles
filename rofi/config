@@ -1,16 +1,17 @@
-rofi.width: 40
-!rofi.padding: 200
-!rofi.fullscreen: true
-rofi.separator-style: solid
+rofi.width: 30
+rofi.padding: 5
+rofi.separator-style: none
 rofi.hide-scrollbar: true
-rofi.line-padding: 10
-rofi.font: Nimbus Sans 12
+rofi.line-padding: 8
+rofi.font: Monospace 9
 rofi.show-match: false
-rofi.bw: 4
-rofi.lines: 10
+rofi.bw: 3
+rofi.lines: 3
+rofi.yoffset: 80
+rofi.location: 2
 
-! Window	 'background', 'border', 'separator'
-rofi.color-window: #c5000000, #000000, #dfdfdf
+! Window	      background border
+rofi.color-window: #2d2d56, #2d2d56
 
-! State		   'bg', 'fg', 'altbg',	'hlbg',	'hlfg'
-rofi.color-normal: #00000000, #dfdfdf, #00000000, #70000000, #dfdfdf
+! State		         bg          fg        altbg	  hlbg 	    hlfg
+rofi.color-normal: #00000000, #99ffffff, #00000000, #00000000, #ffffff

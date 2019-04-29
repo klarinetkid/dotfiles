@@ -13,8 +13,10 @@ override-redirect = false
 fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
+bottom = false
 padding-left = 0
-padding-right = 4
+padding-right = 6
+# 4 for 12 hour clock
 margin-top = 0
 margin-bottom = 0
 module-margin-left = 5
@@ -53,13 +55,14 @@ label-connected = %essid%
 
 [module/date]
 type = internal/date
-interval = 60
+interval = 30
 date =   %b-%d
 
 [module/time]
 type = internal/date
 interval = 60
-date =   %I:%M%p
+# 12 hour: %I:%M%p
+date =   %H:%M
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -101,28 +104,6 @@ animation-charging-15 = %{F#ead995}
 animation-charging-16 = %{F#e6dbad}
 animation-charging-17 = %{F#e3ddc6}
 animation-charging-18 = %{F#dfdfdf}
-
-[comment]
-animation-charging-0 = %{F#dfdfdf}
-animation-charging-1 = %{F#dcdcc6}
-animation-charging-2 = %{F#d9d9ad}
-animation-charging-3 = %{F#d6d695}
-animation-charging-4 = %{F#d3d37c}
-animation-charging-5 = %{F#d0d063}
-animation-charging-6 = %{F#cdcd4a}
-animation-charging-7 = %{F#caca32}
-animation-charging-8 = %{F#c7c719}
-animation-charging-9 = %{F#c4c400}
-animation-charging-10 = %{F#c7c719}
-animation-charging-11 = %{F#caca32}
-animation-charging-12 = %{F#cdcd4a}
-animation-charging-13 = %{F#d0d063}
-animation-charging-14 = %{F#d3d37c}
-animation-charging-15 = %{F#d6d695}
-animation-charging-16 = %{F#d9d9ad}
-animation-charging-17 = %{F#dcdcc6}
-animation-charging-18 = %{F#dfdfdf}
-
 
 [module/i3]
 type = internal/i3
